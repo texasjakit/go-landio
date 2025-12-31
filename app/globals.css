@@ -1,26 +1,156 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+@theme {
+  /* Fonts */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Custom Content Widths */
+  --width-content-box: 422px;
+  --width-content-box-large: 482px;
+  --width-content-readable: 896px;
+
+  /* Custom Spacing */
+  --spacing-section-normal: 4rem;
+  --spacing-section-large: 6rem;
+  --spacing-offset: 6rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --card-border: #333333;
+  --accent: #ffffff;
+  --teal: #00ffff;
+  --teal-glow: #00cccc;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes shimmer {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(200%);
+  }
+}
+
+/* Custom Scrollbar for Webkit */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+
+/* Lenis Smooth Scroll Styles */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ============================================
+   DESIGN SYSTEM UTILITIES
+   ============================================ */
+
+/* Content Width Utilities */
+.content-box {
+  width: 100%;
+  max-width: 422px;
+}
+
+.content-box-large {
+  width: 100%;
+  max-width: 482px;
+}
+
+.content-max-readable {
+  width: 100%;
+  max-width: 896px;
+}
+
+/* Glassmorphism Pattern */
+.glass {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Section Spacing Patterns */
+.section-padding-normal {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .section-padding-normal {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.section-padding-loose {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 1024px) {
+  .section-padding-loose {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+/* Content Offset Utilities (for asymmetric layouts) */
+.content-offset-left {
+  padding-left: 0;
+}
+
+@media (min-width: 1024px) {
+  .content-offset-left {
+    padding-left: 6rem;
+  }
+}
+
+.content-offset-right {
+  padding-right: 0;
+}
+
+@media (min-width: 1024px) {
+  .content-offset-right {
+    padding-right: 6rem;
+  }
 }
