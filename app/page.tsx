@@ -141,7 +141,7 @@ const pageData: PageData = {
         variant: "parallax",
         title: "LIQUIDITY IN AN ILLIQUID MARKET",
         description: "Land has traditionally been one of the hardest assets to sell. We're changing that. By streamlining the marketing process and connecting you directly with qualified buyers, we turn stagnant inventory into capital you can reinvest.",
-        imageUrl: "/images/ux-map.png",
+        imageUrl: "/images/UX-map.png",
         orientation: "left",
       },
     },
